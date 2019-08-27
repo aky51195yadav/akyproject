@@ -18,7 +18,6 @@ public class MainController {
 	public String showLoginPage() {
 		return "LoginPage";
 	}
-
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
 		boolean service = logservice.userValidation(name, password);
