@@ -14,7 +14,7 @@ public class JdbcController {
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	@ResponseBody
 	public String createTable() {
-		jdbc.execute("insert into employee values(1, 'Ankit', 1234567,'Noida')");
+		jdbc.execute("insert into employee values(21, 'yadav', 7777777, 'Noida')");
 		return "Table Created Successfully";
 	}
 }
