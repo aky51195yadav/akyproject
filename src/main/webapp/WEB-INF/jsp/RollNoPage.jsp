@@ -8,7 +8,7 @@
 </head>
 <body>
     <form action="http://localhost:9021/logs/datapage" method="post">
-    Roll No: <input type="number">
+    Roll No: <input type="number" name="rollnumber">
     <input type="submit">
     </form>
 </body>

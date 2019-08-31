@@ -1,6 +1,7 @@
 package com.example.demo.app;
 
 public class StudentMarksPOJO {
+
 	private int rollno;
 	private int maths;
 	private int english;
@@ -83,5 +84,10 @@ public class StudentMarksPOJO {
 		this.maxmarks = maxmarks;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "StudentMarksPOJO [rollno=" + rollno + ", maths=" + maths + ", english=" + english + ", hindi=" + hindi
+				+ ", science=" + science + ", physics=" + physics + ", chemistry=" + chemistry + ", biology=" + biology
+				+ ", maxmarks=" + maxmarks + "]";
+	}
 }

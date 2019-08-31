@@ -7,13 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MappingDetails {
-	@Autowired
-	StudentDetailsPOJO studentDetailsPOJO;
 
-	StudentMarksPOJO studentMarksPOJO;
-	
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbcTemplate() {
@@ -24,17 +23,18 @@ public class MappingDetails {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public List<StudentDetailsPOJO> getStudentsDetails()
+	public List<StudentDetailsPOJO> getStudentsDetails(int rollnumber)
 	{
-		String query = ("Select * from StudentDetails");
-		 return jdbcTemplate.query(query, new RowMapper<StudentDetailsPOJO>(){
+		
+		 return jdbcTemplate.query("Select * from StudentDetails where StuRollNo =  ?",new Object[] {rollnumber}, new RowMapper<StudentDetailsPOJO>(){
 			@Override
 			public StudentDetailsPOJO mapRow(ResultSet rs, int rowNum) throws SQLException {
-			       studentDetailsPOJO.setRollno(rs.getInt(1));
-			       studentDetailsPOJO.setName(rs.getString(2));
-			       studentDetailsPOJO.setFname(rs.getString(3));
-			       studentDetailsPOJO.setAddress(rs.getString(4));
-				return studentDetailsPOJO;
+				StudentDetailsPOJO detailsPOJO = new StudentDetailsPOJO();
+				detailsPOJO.setRollno(rs.getInt(1));
+				detailsPOJO.setName(rs.getString(2));
+				detailsPOJO.setFname(rs.getString(3));
+				detailsPOJO.setAddress(rs.getString(4));
+				return detailsPOJO;
 			}
 			
 		});
@@ -46,17 +46,20 @@ public class MappingDetails {
 
 			@Override
 			public StudentMarksPOJO mapRow(ResultSet rs, int rowNum) throws SQLException {
-			    studentMarksPOJO.setMaths(rs.getInt(1));
-			    studentMarksPOJO.setEnglish(rs.getInt(1));
-			    studentMarksPOJO.setHindi(rs.getInt(1));
-			    studentMarksPOJO.setScience(rs.getInt(1));
-			    studentMarksPOJO.setPhysics(rs.getInt(1));
-			    studentMarksPOJO.setChemistry(rs.getInt(1));
-			    studentMarksPOJO.setBiology(rs.getInt(1));
-			    studentMarksPOJO.setMaxmarks(rs.getInt(1));
-				return studentMarksPOJO;
+				StudentMarksPOJO marksPOJO = new StudentMarksPOJO();
+				marksPOJO.setMaths(rs.getInt(1));
+				marksPOJO.setEnglish(rs.getInt(1));
+				marksPOJO.setHindi(rs.getInt(1));
+				marksPOJO.setScience(rs.getInt(1));
+				marksPOJO.setPhysics(rs.getInt(1));
+				marksPOJO.setChemistry(rs.getInt(1));
+				marksPOJO.setBiology(rs.getInt(1));
+				marksPOJO.setMaxmarks(rs.getInt(1));
+				return marksPOJO;
 			}
     		
     	});
     }
+    
+    
 }

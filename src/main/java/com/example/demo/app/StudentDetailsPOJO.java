@@ -1,7 +1,10 @@
 package com.example.demo.app;
 
+
 public class StudentDetailsPOJO {
-      private int rollno;
+   
+
+	  private int rollno;
       private String name;
       private String fname;
       private String address;
@@ -37,6 +40,10 @@ public class StudentDetailsPOJO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-      
+	   @Override
+		public String toString() {
+			return "StudentDetailsPOJO [rollno=" + rollno + ", name=" + name + ", fname=" + fname + ", address=" + address
+					+ "]";
+		}
       
 }

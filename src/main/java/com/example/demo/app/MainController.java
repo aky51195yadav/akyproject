@@ -1,19 +1,21 @@
 package com.example.demo.app;
 
 
-//import org.springframework.jdbc.core.JdbcTemplate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-//import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
 	//@Autowired
 	//private LoginService logservice;
-
+	 @Autowired
+	 MappingDetails details;
 	
 	@RequestMapping(value = "rollpage", method = RequestMethod.GET) 
 	public String rollnoPage()
@@ -22,9 +24,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "datapage", method = RequestMethod.POST)
-	public String studentDataPage()
+	public String studentDataPage(@RequestParam int rollnumber)
 	{
-		
+	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber);
+	      StudentDetailsPOJO studentDetailsPOJO =  list.get(rollnumber);
+		  System.out.println(studentDetailsPOJO);
 		return "DetailsMarksTable";
 	}
 
