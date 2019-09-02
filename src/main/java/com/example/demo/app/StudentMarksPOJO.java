@@ -11,7 +11,25 @@ public class StudentMarksPOJO {
 	private int chemistry;
 	private int biology;
 	private int maxmarks;
-	
+	private float obtainedmarks;
+	private float percentage;
+
+	public float getPercentage() {
+		return percentage;
+	}
+
+	public float getObtainedmarks() {
+		return obtainedmarks;
+	}
+
+	public void setObtainedmarks(float obtainMarks) {
+		this.obtainedmarks = obtainMarks;
+	}
+
+	public void setPercentage(float percentage) {
+		this.percentage = percentage;
+	}
+
 	public int getRollno() {
 		return rollno;
 	}
@@ -76,7 +94,7 @@ public class StudentMarksPOJO {
 		this.biology = biology;
 	}
 	
-	public int getMaxmarks() {
+	public float getMaxmarks() {
 		return maxmarks;
 	}
 	
@@ -90,4 +108,6 @@ public class StudentMarksPOJO {
 				+ ", science=" + science + ", physics=" + physics + ", chemistry=" + chemistry + ", biology=" + biology
 				+ ", maxmarks=" + maxmarks + "]";
 	}
+
+
 }

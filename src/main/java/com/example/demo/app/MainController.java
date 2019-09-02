@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -24,12 +25,22 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "datapage", method = RequestMethod.POST)
-	public String studentDataPage(@RequestParam int rollnumber)
+	public ModelAndView studentDataPage(@RequestParam int rollnumber)
 	{
 	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber);
-	      StudentDetailsPOJO studentDetailsPOJO =  list.get(rollnumber);
+	      List<StudentMarksPOJO> list1 = details.getStudentMarks(rollnumber);
+	      StudentDetailsPOJO studentDetailsPOJO =  list.get(0);
 		  System.out.println(studentDetailsPOJO);
-		return "DetailsMarksTable";
+	      StudentMarksPOJO studentMarksPOJO = list1.get(0);
+		  System.out.println(studentMarksPOJO);
+		  System.out.println(studentMarksPOJO.getMaxmarks());
+		  System.out.println(studentMarksPOJO.getObtainedmarks());
+		  System.out.println(studentMarksPOJO.getPercentage());
+		  ModelAndView modelAndView = new ModelAndView();
+		  modelAndView.setViewName("DetailsMarksTable");
+		  modelAndView.addObject("sd", studentDetailsPOJO);
+		  modelAndView.addObject("sm",studentMarksPOJO);
+		  return modelAndView;
 	}
 
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)

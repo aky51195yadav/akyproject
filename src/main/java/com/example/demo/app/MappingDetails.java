@@ -23,10 +23,9 @@ public class MappingDetails {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public List<StudentDetailsPOJO> getStudentsDetails(int rollnumber)
+	public  List<StudentDetailsPOJO> getStudentsDetails(int rollnumber)
 	{
-		
-		 return jdbcTemplate.query("Select * from StudentDetails where StuRollNo =  ?",new Object[] {rollnumber}, new RowMapper<StudentDetailsPOJO>(){
+		 return jdbcTemplate.query("Select * from StudentDetails where StuRollNo = ?" , new Object[] {rollnumber}, new RowMapper<StudentDetailsPOJO>(){
 			@Override
 			public StudentDetailsPOJO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				StudentDetailsPOJO detailsPOJO = new StudentDetailsPOJO();
@@ -39,22 +38,32 @@ public class MappingDetails {
 			
 		});
 	}
-    public List<StudentMarksPOJO> getStudentMarks()
+    public List<StudentMarksPOJO> getStudentMarks(int rollnumber)
     {
-    	String query = "Select * from StudentMarks";
-    	return jdbcTemplate.query(query, new RowMapper<StudentMarksPOJO>() {
+    	
+    	return jdbcTemplate.query("Select * from StudentMarks where StuRollNo = ?" , new Object[] {rollnumber}, new RowMapper<StudentMarksPOJO>() {
 
 			@Override
 			public StudentMarksPOJO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				StudentMarksPOJO marksPOJO = new StudentMarksPOJO();
-				marksPOJO.setMaths(rs.getInt(1));
-				marksPOJO.setEnglish(rs.getInt(1));
-				marksPOJO.setHindi(rs.getInt(1));
-				marksPOJO.setScience(rs.getInt(1));
-				marksPOJO.setPhysics(rs.getInt(1));
-				marksPOJO.setChemistry(rs.getInt(1));
-				marksPOJO.setBiology(rs.getInt(1));
-				marksPOJO.setMaxmarks(rs.getInt(1));
+				marksPOJO.setRollno(rs.getInt(1));
+				marksPOJO.setMaths(rs.getInt(2));
+				marksPOJO.setEnglish(rs.getInt(3));
+				marksPOJO.setHindi(rs.getInt(4));
+				marksPOJO.setScience(rs.getInt(5));
+				marksPOJO.setPhysics(rs.getInt(6));
+				marksPOJO.setChemistry(rs.getInt(7));
+				marksPOJO.setBiology(rs.getInt(8));
+				marksPOJO.setMaxmarks(rs.getInt(9));
+				float obtainMarks =rs.getInt(2)+rs.getInt(3)+rs.getInt(4)+rs.getInt(5)+ rs.getInt(6)+rs.getInt(7)+rs.getInt(8);
+				marksPOJO.setObtainedmarks(obtainMarks);
+				float percentage = (((marksPOJO.getObtainedmarks())*100)/(marksPOJO.getMaxmarks()));
+				Float F = percentage;
+				String s = F.toString();
+				String s1 = s.substring(0,5);
+				Float F1 = Float.parseFloat(s1);
+				float percentage1 =  F1.floatValue();
+				marksPOJO.setPercentage(percentage1);
 				return marksPOJO;
 			}
     		
