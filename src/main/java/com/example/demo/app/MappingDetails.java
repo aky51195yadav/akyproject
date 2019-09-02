@@ -25,20 +25,23 @@ public class MappingDetails {
 	
 	public  List<StudentDetailsPOJO> getStudentsDetails(int rollnumber)
 	{
-		 return jdbcTemplate.query("Select * from StudentDetails where StuRollNo = ?" , new Object[] {rollnumber}, new RowMapper<StudentDetailsPOJO>(){
+		 return jdbcTemplate.query("Select * from Students where StuRoll = ?" , new Object[] {rollnumber}, new RowMapper<StudentDetailsPOJO>(){
 			@Override
 			public StudentDetailsPOJO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				StudentDetailsPOJO detailsPOJO = new StudentDetailsPOJO();
 				detailsPOJO.setRollno(rs.getInt(1));
 				detailsPOJO.setName(rs.getString(2));
-				detailsPOJO.setFname(rs.getString(3));
-				detailsPOJO.setAddress(rs.getString(4));
+				detailsPOJO.setSubject(rs.getString(3));
+				detailsPOJO.setMaxmarks(rs.getFloat(4));
+				detailsPOJO.setObtmarks(rs.getFloat(5));
+				//detailsPOJO.setFname(rs.getString(3));
+				//detailsPOJO.setAddress(rs.getString(4));
 				return detailsPOJO;
 			}
 			
 		});
 	}
-    public List<StudentMarksPOJO> getStudentMarks(int rollnumber)
+    /*public List<StudentMarksPOJO> getStudentMarks(int rollnumber)
     {
     	
     	return jdbcTemplate.query("Select * from StudentMarks where StuRollNo = ?" , new Object[] {rollnumber}, new RowMapper<StudentMarksPOJO>() {
@@ -68,7 +71,7 @@ public class MappingDetails {
 			}
     		
     	});
-    }
+    }*/
     
     
 }

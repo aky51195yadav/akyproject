@@ -28,18 +28,26 @@ public class MainController {
 	public ModelAndView studentDataPage(@RequestParam int rollnumber)
 	{
 	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber);
-	      List<StudentMarksPOJO> list1 = details.getStudentMarks(rollnumber);
+	      //List<StudentMarksPOJO> list1 = details.getStudentMarks(rollnumber);
+	      int listSize = list.size();
+	      String subjects="";
+	      /*for (int i = 0; i < listSize; i++) {
+             StudentDetailsPOJO studentDetailsPOJO = list.get(i);
+            subjects = subjects + studentDetailsPOJO.getSubject();
+	    	  System.out.println(studentDetailsPOJO);
+	    	  System.out.println(subjects);
+	      }*/
 	      StudentDetailsPOJO studentDetailsPOJO =  list.get(0);
-		  System.out.println(studentDetailsPOJO);
-	      StudentMarksPOJO studentMarksPOJO = list1.get(0);
-		  System.out.println(studentMarksPOJO);
-		  System.out.println(studentMarksPOJO.getMaxmarks());
-		  System.out.println(studentMarksPOJO.getObtainedmarks());
-		  System.out.println(studentMarksPOJO.getPercentage());
+	      System.out.println(studentDetailsPOJO.getSubject());
+	      //StudentMarksPOJO studentMarksPOJO = list1.get(0);
+		  //System.out.println(studentMarksPOJO);
+		  //System.out.println(studentMarksPOJO.getMaxmarks());
+		  //System.out.println(studentMarksPOJO.getObtainedmarks());
+		  //System.out.println(studentMarksPOJO.getPercentage());
 		  ModelAndView modelAndView = new ModelAndView();
 		  modelAndView.setViewName("DetailsMarksTable");
 		  modelAndView.addObject("sd", studentDetailsPOJO);
-		  modelAndView.addObject("sm",studentMarksPOJO);
+		  //modelAndView.addObject("sm",studentMarksPOJO);
 		  return modelAndView;
 	}
 

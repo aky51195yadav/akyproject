@@ -27,21 +27,23 @@ th
 <h1><i>Student Details</i></h1>
    <table border=2 , >
       <tr>
-      <th style="padding: 10px">RollNo</th>
-      <th>StudentName</th>
-      <th>FatherName</th>
-      <th>Address</th>
+      <th style="padding: 10px">StuRoll</th>
+      <th>StuName</th>
+      <th>Subject</th>
+      <th>MaxMarks</th>
+      <th>ObtainedMarks</th>
       </tr>
        
       <tr>
       <td style="padding: 10px">${sd.rollno}</td>
       <td>${sd.name}</td>
-      <td>${sd.fname}</td>
-      <td>${sd.address}</td>
+      <td>${sd.subject}</td>
+      <td>${sd.maxmarks}</td>
+      <td>${sd.obtmarks}</td>
       </tr>
       </table>
       
-     <div>
+     <!--<div>
       <h1><i>Students Marks</i></h1>
       <table border="2">
       <tr>
@@ -72,6 +74,6 @@ th
       <td>${sm.percentage}</td>
       </tr>
       </table>
-      </div>
+      </div>-->
 </body>
 </html>

@@ -3,11 +3,11 @@ package com.example.demo.app;
 
 public class StudentDetailsPOJO {
    
-
 	  private int rollno;
       private String name;
-      private String fname;
-      private String address;
+      private String subject;
+      private float maxmarks;
+      private float obtmarks;
       
 	public int getRollno() {
 		return rollno;
@@ -25,25 +25,33 @@ public class StudentDetailsPOJO {
 		this.name = name;
 	}
 	
-	public String getFname() {
-		return fname;
+	public String getSubject() {
+		return subject;
 	}
 	
-	public void setFname(String fname) {
-		this.fname = fname;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	
-	public String getAddress() {
-		return address;
+	public float getMaxmarks() {
+		return maxmarks;
 	}
 	
-	public void setAddress(String address) {
-		this.address = address;
+	public void setMaxmarks(float maxmarks) {
+		this.maxmarks = maxmarks;
 	}
-	   @Override
-		public String toString() {
-			return "StudentDetailsPOJO [rollno=" + rollno + ", name=" + name + ", fname=" + fname + ", address=" + address
-					+ "]";
-		}
-      
+	
+	public float getObtmarks() {
+		return obtmarks;
+	}
+	
+	public void setObtmarks(float obtmarks) {
+		this.obtmarks = obtmarks;
+	} 
+	  @Override
+	public String toString() {
+		return "StudentDetailsPOJO [rollno=" + rollno + ", name=" + name + ", subject=" + subject + ", maxmarks="
+				+ maxmarks + ", obtmarks=" + obtmarks + "]";
+	}
+
 }
