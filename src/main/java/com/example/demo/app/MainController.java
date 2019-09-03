@@ -20,11 +20,19 @@ public class MainController {
 	
 	@RequestMapping(value = "rollpage", method = RequestMethod.GET) 
 	public String rollnoPage()
+	{   try {   
+		details.getFileStream();
+	}
+	catch(Exception e)
 	{
+		e.printStackTrace();
+	}
 			return "RollNoPage";
 	}
 	
-	@RequestMapping(value = "datapage", method = RequestMethod.POST)
+	
+	
+	/*@RequestMapping(value = "datapage", method = RequestMethod.POST)
 	public ModelAndView studentDataPage(@RequestParam int rollnumber)
 	{
 	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber); 
@@ -49,12 +57,14 @@ public class MainController {
 		  modelAndView.addObject("sd", studentDetailsPOJO1);
 		  modelAndView.addObject("sdp", studentDetailsPOJO);
 		  return modelAndView;
+	}*/
+	/*@RequestMapping(value = "savedData", method = RequestMethod.POST)
+	public String addDataDetails(@RequestParam int rollnumber)
+	{   
+		List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber);
+		return "SendDetailsToDatabase";
+		
 	}
-	
-	
-	
-	
-	
 	
 	
 

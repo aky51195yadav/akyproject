@@ -2,14 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-    <form action="http://localhost:9021/logs/datapage" method="post">
-    Roll No: <input type="number" name="rollnumber">
-    <input type="submit">
+<h3>Enter Student Roll No</h3>
+    <form action="http://localhost:9021/logs/savedData" method="post">
+    RollNo : <input type="number" name="rollnumber">
+              <input type="submit">
     </form>
 </body>
 </html>

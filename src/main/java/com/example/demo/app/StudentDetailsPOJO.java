@@ -3,64 +3,39 @@ package com.example.demo.app;
 
 public class StudentDetailsPOJO {
    
-	  private int rollno;
-      private String name;
-      private String subject;
-      private float maxmarks;
-      private float obtmarks;
-      private float percentage;
+	  private int rollNo;
+      private String fatherName;
+      private String address;
       
-	public float getPercentage() {
-		return percentage;
-	}
-
-	public void setPercentage(float percentage) {
-		this.percentage = percentage;
-	}
-
-	public int getRollno() {
-		return rollno;
+	public int getRollNo() {
+		return rollNo;
 	}
 	
-	public void setRollno(int rollno) {
-		this.rollno = rollno;
+	public void setRollNo(int rollNo) {
+		this.rollNo = rollNo;
 	}
 	
-	public String getName() {
-		return name;
+	public String getFatherName() {
+		return fatherName;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setFatherName(String fatherName) {
+		this.fatherName = fatherName;
 	}
 	
-	public String getSubject() {
-		return subject;
+	public String getAddress() {
+		return address;
 	}
 	
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
-	public float getMaxmarks() {
-		return maxmarks;
-	}
-	
-	public void setMaxmarks(float maxmarks) {
-		this.maxmarks = maxmarks;
-	}
-	
-	public float getObtmarks() {
-		return obtmarks;
-	}
-	
-	public void setObtmarks(float obtmarks) {
-		this.obtmarks = obtmarks;
-	} 
-	  @Override
+	@Override
 	public String toString() {
-		return "StudentDetailsPOJO [rollno=" + rollno + ", name=" + name + ", subject=" + subject + ", maxmarks="
-				+ maxmarks + ", obtmarks=" + obtmarks + "]";
+		return "StudentDetailsPOJO [rollNo=" + rollNo + ", fatherName=" + fatherName + ", address=" + address + "]";
 	}
+      
+
 
 }

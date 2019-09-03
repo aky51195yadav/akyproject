@@ -1,5 +1,12 @@
 package com.example.demo.app;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,12 +25,38 @@ public class MappingDetails {
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
+      
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public  List<StudentDetailsPOJO> getStudentsDetails(int rollnumber)
+	public void getFileStream() throws IOException
+	{
+		  try {
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("Select udk, gfimage from instrumentimages");
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next())
+			{
+				 String udk = rs.getString("udk");
+				 byte[]  is =  rs.getBytes("gfimage");
+				 File f = new File("E:/",udk+".jpg");
+				 FileOutputStream fos = new FileOutputStream(f);
+				 //byte[] buffer = new byte[is.available()];
+				 System.out.println(is.length);
+				
+				 fos.write(is);
+				 fos.flush();
+				 fos.close();
+			}
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+	}
+	
+	/*public  List<StudentDetailsPOJO> getStudentsDetails(int rollnumber)
 	{
 		 return jdbcTemplate.query("Select * from Students where StuRoll = ?" , new Object[] {rollnumber}, new RowMapper<StudentDetailsPOJO>(){
 			@Override
@@ -34,7 +67,6 @@ public class MappingDetails {
 				detailsPOJO.setSubject(rs.getString(3));
 				detailsPOJO.setMaxmarks(rs.getFloat(4));
 				detailsPOJO.setObtmarks(rs.getFloat(5));
-				System.out.println(detailsPOJO);
 				//detailsPOJO.setFname(rs.getString(3));
 				//detailsPOJO.setAddress(rs.getString(4));
 				return detailsPOJO;
