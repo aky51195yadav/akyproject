@@ -58,13 +58,7 @@ public class MainController {
 		  modelAndView.addObject("sdp", studentDetailsPOJO);
 		  return modelAndView;
 	}*/
-	/*@RequestMapping(value = "savedData", method = RequestMethod.POST)
-	public String addDataDetails(@RequestParam int rollnumber)
-	{   
-		List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber);
-		return "SendDetailsToDatabase";
-		
-	}
+	 
 	
 	
 
