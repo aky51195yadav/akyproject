@@ -22,6 +22,10 @@ h1{
 th
 {
  background-color: silver;
+ padding: 7px;
+}
+td{
+    padding: 5px;
 }
 </style>
 </head>
@@ -32,7 +36,7 @@ th
 
 <table border=2>
       <tr>
-      <th style="padding: 10px">StuRoll</th>
+      <th>StuRoll</th>
       <th>StuName</th>
       </tr>
               
@@ -49,8 +53,8 @@ th
 <table border="2" >
       <tr>
       <th>Subject</th>
-      <th>MaxMarks</th>
       <th>ObtainedMarks</th>
+      <th>MaxMarks</th>
       </tr>
         
         <c:forEach  items="${stulist}" var="list">
@@ -60,6 +64,16 @@ th
         <td>${list.obtmarks}</td>
         </tr>
         </c:forEach>
+</table>
+ 
+ <h1>Student Percentage</h1> 
+<table border="2">
+        <tr>
+        <th>Percentage</th>
+        </tr>
+        <tr>
+         <td>${sdp.percentage}</td>
+        </tr>
 </table>
   </div>  
     

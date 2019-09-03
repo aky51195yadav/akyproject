@@ -8,7 +8,16 @@ public class StudentDetailsPOJO {
       private String subject;
       private float maxmarks;
       private float obtmarks;
+      private float percentage;
       
+	public float getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(float percentage) {
+		this.percentage = percentage;
+	}
+
 	public int getRollno() {
 		return rollno;
 	}

@@ -28,19 +28,30 @@ public class MainController {
 	public ModelAndView studentDataPage(@RequestParam int rollnumber)
 	{
 	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber); 
+	      float totalMarks=0 , totalMaxMarks=0;
+	      StudentDetailsPOJO studentDetailsPOJO = null;
+	      for (int i = 0; i < list.size(); i++) {
+          studentDetailsPOJO = list.get(i);
+          totalMaxMarks = totalMaxMarks + studentDetailsPOJO.getMaxmarks();
+          totalMarks = totalMarks + studentDetailsPOJO.getObtmarks();
+	      }
+	      float percentage = ((totalMarks*100)/(totalMaxMarks));
+	      studentDetailsPOJO.setPercentage(percentage);
+	      //float percentage = (totalMarks*100)/(studentDetailsPOJO.get)
+	      //System.out.println(list);
+	       StudentDetailsPOJO studentDetailsPOJO1 =  list.get(0);
+	     // System.out.println(studentDetailsPOJO1.getSubject());
 	      //List<StudentMarksPOJO> list1 = details.getStudentMarks(rollnumber);
-	      //int listSize = list.size();
-	      //ModelAndView modelAndView = new ModelAndView();
-	      System.out.println(list);
-	      StudentDetailsPOJO studentDetailsPOJO =  list.get(0);
-	      System.out.println(studentDetailsPOJO.getSubject());
 	      //StudentMarksPOJO studentMarksPOJO = list1.get(0);
 		  ModelAndView modelAndView = new ModelAndView();
 		  modelAndView.setViewName("DetailsMarksTable");
 		  modelAndView.addObject("stulist", list);
-		  modelAndView.addObject("sd", studentDetailsPOJO);
+		  modelAndView.addObject("sd", studentDetailsPOJO1);
+		  modelAndView.addObject("sdp", studentDetailsPOJO);
 		  return modelAndView;
 	}
+	
+	
 	
 	
 	
