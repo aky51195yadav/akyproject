@@ -27,29 +27,25 @@ public class MainController {
 	@RequestMapping(value = "datapage", method = RequestMethod.POST)
 	public ModelAndView studentDataPage(@RequestParam int rollnumber)
 	{
-	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber);
+	      List<StudentDetailsPOJO> list = details.getStudentsDetails(rollnumber); 
 	      //List<StudentMarksPOJO> list1 = details.getStudentMarks(rollnumber);
-	      int listSize = list.size();
-	      String subjects="";
-	      /*for (int i = 0; i < listSize; i++) {
-             StudentDetailsPOJO studentDetailsPOJO = list.get(i);
-            subjects = subjects + studentDetailsPOJO.getSubject();
-	    	  System.out.println(studentDetailsPOJO);
-	    	  System.out.println(subjects);
-	      }*/
+	      //int listSize = list.size();
+	      //ModelAndView modelAndView = new ModelAndView();
+	      System.out.println(list);
 	      StudentDetailsPOJO studentDetailsPOJO =  list.get(0);
 	      System.out.println(studentDetailsPOJO.getSubject());
 	      //StudentMarksPOJO studentMarksPOJO = list1.get(0);
-		  //System.out.println(studentMarksPOJO);
-		  //System.out.println(studentMarksPOJO.getMaxmarks());
-		  //System.out.println(studentMarksPOJO.getObtainedmarks());
-		  //System.out.println(studentMarksPOJO.getPercentage());
 		  ModelAndView modelAndView = new ModelAndView();
 		  modelAndView.setViewName("DetailsMarksTable");
+		  modelAndView.addObject("stulist", list);
 		  modelAndView.addObject("sd", studentDetailsPOJO);
-		  //modelAndView.addObject("sm",studentMarksPOJO);
 		  return modelAndView;
 	}
+	
+	
+	
+	
+	
 
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginPage() {

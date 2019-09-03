@@ -1,7 +1,10 @@
+
+<%@page import="com.example.demo.app.StudentDetailsPOJO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +12,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 div{
-     margin-top: 100px;
+     margin-top: 30px;
      align-content: center;
      overflow: auto;
 }
@@ -23,25 +26,63 @@ th
 </style>
 </head>
 <body>
- 
+
 <h1><i>Student Details</i></h1>
-   <table border=2 , >
+<!--  ${sd}-->
+
+<table border=2>
       <tr>
       <th style="padding: 10px">StuRoll</th>
       <th>StuName</th>
+      </tr>
+              
+  
+      <tr>
+      <td>${sd.rollno}</td>
+      <td>${sd.name}</td>
+      </tr>  
+     
+</table>
+<div>
+
+<h1>Student Marks</h1>
+<table border="2" >
+      <tr>
       <th>Subject</th>
       <th>MaxMarks</th>
       <th>ObtainedMarks</th>
       </tr>
-       
-      <tr>
-      <td style="padding: 10px">${sd.rollno}</td>
+        
+        <c:forEach  items="${stulist}" var="list">
+        <tr>
+        <td>${list.subject}</td>
+        <td>${list.maxmarks}</td>
+        <td>${list.obtmarks}</td>
+        </tr>
+        </c:forEach>
+</table>
+  </div>  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <!--<td style="padding: 10px">${sd.rollno}</td>
       <td>${sd.name}</td>
       <td>${sd.subject}</td>
       <td>${sd.maxmarks}</td>
-      <td>${sd.obtmarks}</td>
-      </tr>
-      </table>
+      <td>${sd.obtmarks}</td>-->
+     
       
      <!--<div>
       <h1><i>Students Marks</i></h1>
