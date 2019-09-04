@@ -69,6 +69,21 @@ public class MappingDetails1 {
 			}
 		});
 	}
+	
+	public int marksUpdated(float obtainedMarks, String subject, int rollNum) {
+		
+		String query = "update Students set ObtainMarks = ? where Subject=? and StuRoll=? ";
+		return jdbcTemplate.execute(query, new PreparedStatementCallback<Integer>() {
+
+			@Override
+			public Integer doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+				ps.setFloat(1, obtainedMarks);
+				ps.setString(2, subject);
+				ps.setInt(3, rollNum);
+				return ps.executeUpdate();
+			}
+		});
+	}
 	public float percentage(List<StudentsPOJO> list)
 	{
 	    float percentage = 0;

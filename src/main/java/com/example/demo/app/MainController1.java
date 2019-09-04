@@ -58,12 +58,26 @@ public class MainController1 {
 	}
 
 	@RequestMapping(value = "editmarks", method = RequestMethod.POST)
-	public String editMarks(@RequestParam String subject, @RequestParam float obtainedMarks,
-			@RequestParam float maxMarks) {
-            List<?> list = new ArrayList();
-            
-            
-		return "MarksEditor";
+	public ModelAndView editMarks(@RequestParam String subject, @RequestParam float obtainedMarks,
+			@RequestParam float maxMarks, @RequestParam int rollNum, @RequestParam String stuName) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("MarksEditor");
+		modelAndView.addObject("rollNum", rollNum);
+		modelAndView.addObject("stuName", stuName);
+		modelAndView.addObject("subject", subject);
+		modelAndView.addObject("obtMarks", obtainedMarks);
+		modelAndView.addObject("maxMarks", maxMarks);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "editedmarks", method = RequestMethod.POST)
+	public String saveEditedMarks(@RequestParam int rollNum, @RequestParam String stuName, @RequestParam String subject,
+			@RequestParam float obtainedMarks, @RequestParam float maxMarks) {
+		details.marksUpdated(obtainedMarks,subject,rollNum);
+		
+		return "MarksEdited";
+
 	}
 
 }

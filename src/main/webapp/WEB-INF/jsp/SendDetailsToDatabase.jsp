@@ -65,6 +65,8 @@ table {
 					<input type="hidden" name="subject" value="${list.subject}">
 					<input type="hidden" name="obtainedMarks" value="${list.obtainedMarks}">
 					<input type="hidden" name="maxMarks" value="${list.maxMarks}">
+					<input type="hidden" name="rollNum" value="${list.rollNum}">
+					<input type="hidden" name="stuName" value="${list.stuName}">
 					   <input type="submit" value="Edit Marks" >
 					</form></td>
 				</tr>
