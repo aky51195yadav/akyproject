@@ -9,7 +9,7 @@
 <body>
 <h3>Enter Student Roll No</h3>
     <form action="http://localhost:9021/logs/savedata" method="post">
-    RollNo : <input type="number" name="rollNum">
+    RollNo : <input type="number" name="rollNum" placeholder="Enter roll no" required="required">
               <input type="submit">
     </form>
 </body>
