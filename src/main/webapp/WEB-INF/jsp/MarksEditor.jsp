@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Update marks</h1>
     <form action="http://localhost:9021/logs/editedmarks" method="post">
      <input type="hidden" name="rollNum" value ="${rollNum}" readonly="readonly">
      <input type="hidden" name="stuName" value ="${stuName}" readonly="readonly">

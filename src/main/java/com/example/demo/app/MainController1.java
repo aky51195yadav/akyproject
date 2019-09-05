@@ -1,6 +1,7 @@
 package com.example.demo.app;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -53,7 +55,7 @@ public class MainController1 {
 	public String savedData(@RequestParam int rollNum, @RequestParam String stuName, @RequestParam String subject,
 			@RequestParam float obtMarks, @RequestParam float maxMarks) {
 		StudentsPOJO studentsPOJO = new StudentsPOJO(rollNum, stuName, subject, obtMarks, maxMarks);
-		Boolean boolean1 = details.saveToDatabase(studentsPOJO);
+		details.saveToDatabase(studentsPOJO);
 		return "DetailsSavedToDatabase";
 	}
 
@@ -74,10 +76,37 @@ public class MainController1 {
 	@RequestMapping(value = "editedmarks", method = RequestMethod.POST)
 	public String saveEditedMarks(@RequestParam int rollNum, @RequestParam String stuName, @RequestParam String subject,
 			@RequestParam float obtainedMarks, @RequestParam float maxMarks) {
-		details.marksUpdated(obtainedMarks,subject,rollNum);
-		
+		details.marksUpdated(obtainedMarks, subject, rollNum);
+
 		return "MarksEdited";
 
+	}
+
+	@RequestMapping(value = "recordToDelete", method = RequestMethod.POST)
+	public ModelAndView deleteRecord(@RequestParam String subject, @RequestParam float obtainedMarks,
+			@RequestParam int rollNum, @RequestParam String stuName) {
+		details.recordDelete(rollNum, stuName, subject);
+
+		List<StudentsPOJO> list = details.getStudents(rollNum);
+		StudentsPOJO pojo = list.get(0);
+		ModelAndView andView = new ModelAndView();
+		andView.setViewName("AfterDelete");
+		andView.addObject("lists", list);
+		andView.addObject("sd", pojo);
+		return andView;
+	}
+
+	@RequestMapping(value = "loadExcel", method = RequestMethod.POST)
+	public void uploadExcel(@RequestParam MultipartFile mf) {
+		File f = new File("E:/Ankit Yadav/ServerFiles", mf.getOriginalFilename());
+		try {
+			mf.transferTo(f);
+			List<StudentsPOJO> list = details.readFile(f);
+		   details.saveExcelToDatabase(list);
+		  
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
