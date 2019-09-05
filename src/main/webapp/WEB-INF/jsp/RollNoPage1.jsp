@@ -18,5 +18,12 @@
 		File : <input type="file" name="mf" required="required"> <input
 			type="submit" value="Upload File">
 	</form>
+	
+    <form action="http://localhost:9021/logs/stuCon/fetchRoll" method="post">
+		RollNo : <input type="number" name="rollNum"
+			placeholder="Enter roll no" required="required"> <input
+			type="submit" value="For Api">
+	</form>
+	
 </body>
 </html>
