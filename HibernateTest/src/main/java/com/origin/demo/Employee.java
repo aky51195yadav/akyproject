@@ -10,21 +10,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Tbl_Employee")
 public class Employee {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Empid")
 	private int id;
-	
+
 	@Column(name = "EmpName")
 	private String name;
-	
+
 	@Column(name = "Profile")
 	private String profile;
-	
+
 	@Column(name = "Salary")
 	private int salary;
-	
+
 	@Column(name = "Address")
 	private String address;
 
@@ -66,5 +66,11 @@ public class Employee {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", profile=" + profile + ", salary=" + salary + ", address="
+				+ address + "]";
 	}
 }
