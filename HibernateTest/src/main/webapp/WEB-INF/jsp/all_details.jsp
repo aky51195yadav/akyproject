@@ -81,7 +81,7 @@ td {
 	</div>
 	<div align="center">
 	<h2>Save More Records</h2>
-	<a href="http://localhost:9021/HibernateTest/form">Click Here</a>
+	<a href="http://localhost:9021/HibernateTest/form"><i>Click Here</i></a>
 	</div>
 </body>
 </html>

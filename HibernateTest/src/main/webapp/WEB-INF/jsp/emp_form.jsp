@@ -28,10 +28,12 @@ a {
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center"><h3>${message}</h3></div><br/>
 	<div align="center">
-		<form action="http://localhost:9021/HibernateTest/save"
-			method="post">
+		<h3>${message}</h3>
+	</div>
+	<br />
+	<div align="center">
+		<form action="http://localhost:9021/HibernateTest/save" method="post" enctype="multipart/form-data">
 			<h2>Enter Employee Details</h2>
 			<table id="tbl">
 
@@ -56,6 +58,10 @@ a {
 						placeholder="Enter address"></td>
 				</tr>
 				<tr>
+				<td>Image</td>
+				<td><input type="file" name="image" required="required"></td>
+				</tr>
+				<tr>
 					<td><input type="submit" value="Save Details" /></td>
 			</table>
 
@@ -64,8 +70,9 @@ a {
 
 	<div align="center">
 		<h2>To get All Employees</h2>
-		<a href="http://localhost:9021/HibernateTest/showAll">Click Here</a>
+		<a href="http://localhost:9021/HibernateTest/showAll"><i>Click
+				Here</i></a>
 	</div>
-	
+
 </body>
 </html>

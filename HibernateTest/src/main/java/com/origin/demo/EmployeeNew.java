@@ -1,43 +1,12 @@
 package com.origin.demo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class EmployeeNew {
 
-@Entity
-@Table(name = "Tbl_Employee")
-public class Employee {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Empid")
 	private int id;
-
-	@Column(name = "EmpName")
 	private String name;
-
-	@Column(name = "Profile")
 	private String profile;
-
-	@Column(name = "Salary")
 	private int salary;
-
-	@Column(name = "Address")
 	private String address;
-
-	@Column(name = "Image")
-	private  byte[] image;
-
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
 
 	public int getId() {
 		return id;
@@ -81,7 +50,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", profile=" + profile + ", salary=" + salary + ", address="
+		return "EmployeeNew [id=" + id + ", name=" + name + ", profile=" + profile + ", salary=" + salary + ", address="
 				+ address + "]";
 	}
+
 }

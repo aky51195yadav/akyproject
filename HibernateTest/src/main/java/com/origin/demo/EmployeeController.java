@@ -1,5 +1,7 @@
 package com.origin.demo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EmployeeController {
-
 	@Autowired
 	private EmployeeService empService;
 
@@ -23,10 +25,11 @@ public class EmployeeController {
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String empDetails(@RequestParam String name, @RequestParam String profile, @RequestParam int salary,
-			@RequestParam String address) {
+			@RequestParam String address, @RequestParam MultipartFile image) {
+
+		empService.imageWork(image);
+
 		Employee employee = new Employee();
-		ModelAndView mav = new ModelAndView();
-		mav.getModel().put("message", "Record Saved Successfully");
 		employee.setName(name);
 		employee.setProfile(profile);
 		employee.setSalary(salary);
