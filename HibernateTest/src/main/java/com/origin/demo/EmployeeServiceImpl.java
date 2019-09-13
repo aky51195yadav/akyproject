@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,8 +38,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void imageWork(MultipartFile image) {
-		File file = null;
-		file = new File("E:\\Ankit Yadav\\DatabaseImages", image.getOriginalFilename());
+		 String fileName = image.getOriginalFilename();
+		 File file = new File("E:\\Ankit Yadav\\DatabaseImages", fileName);
 		try {
 			image.transferTo(file);
 		} catch (IllegalStateException e) {
@@ -46,17 +47,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+      
+	}
 
-		file = new File("E:\\Ankit Yadav\\DatabaseImages", "image");
-		System.out.println(file.length());
-		byte[] fileByte = new byte[(int) file.length()];
-		System.out.println(fileByte);
+	@Override
+	public Employee fetchRecord(String name, String address) {
+		return employeeRepo.findByNameAndAddress(name, address);
 
-		try {
-			FileInputStream fis = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	}
+
+	@Override
+	public Employee fetchRecordTbl_Employee(int empId) {
+
+		Optional<Employee> option = employeeRepo.findById(empId);
+		if (option.isPresent()) {
+
+			return option.get();
+
 		}
+		return new Employee();
+
 	}
 
 }

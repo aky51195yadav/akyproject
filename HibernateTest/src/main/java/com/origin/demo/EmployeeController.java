@@ -1,6 +1,8 @@
 package com.origin.demo;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService empService;
+	@Autowired
+	private AccountInfoService accService;
 
 	@RequestMapping(value = "form", method = RequestMethod.GET)
 	public String fillDetails() {
@@ -28,12 +32,16 @@ public class EmployeeController {
 			@RequestParam String address, @RequestParam MultipartFile image) {
 
 		empService.imageWork(image);
-
 		Employee employee = new Employee();
 		employee.setName(name);
 		employee.setProfile(profile);
 		employee.setSalary(salary);
 		employee.setAddress(address);
+		try {
+			employee.setImage(image.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		empService.saveEmployee(employee);
 		return fillDetails();
 	}
@@ -81,5 +89,54 @@ public class EmployeeController {
 		empService.deleteEmployee(empId);
 		return showRecords();
 	}
+
+	@RequestMapping(value = "getPage", method = RequestMethod.GET)
+	public String getDetails() {
+
+		return "enter_nameaddress";
+	}
+
+	@RequestMapping(value = "getDetails", method = RequestMethod.POST)
+	public ModelAndView getNameAddress(@RequestParam String name, @RequestParam String address) {
+		Employee emp = empService.fetchRecord(name, address);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("enter_nameaddress");
+		mav.addObject("emp", emp);
+		return mav;
+	}
+
+	@RequestMapping(value = "getEmpId", method = RequestMethod.POST)
+	public ModelAndView getEmpId(@RequestParam int empId) {
+		Employee emp = empService.fetchRecordTbl_Employee(empId);
+		AccountInfo info = accService.fetchRecordAccountInfo(empId);
+		System.out.println(emp);
+		System.out.println(info);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("emp_details");
+		mav.addObject("emp", emp);
+		mav.addObject("info", info);
+		return mav;
+	}
+
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	public String showHomepage() {
+		return "enter_nameaddress";
+	}
+
+	@RequestMapping(value = "fillNewEmpDataForm", method = RequestMethod.POST)
+	public String saveEmployeeDetails(@RequestParam int empId) {
+		return "enter_new_emp_details";
+	}
+
+	/*@RequestMapping(value="getNewDetails" ,method = RequestMethod.POST) 
+	 public String saveSalaryAndLocation(@RequestParam String empName,@RequestParam String profile,@RequestParam String address,@RequestParam String
+	  location,@RequestParam int salary) {
+	  
+	 Employee empInfo = new Employee(); empInfo.setDesignation(designation);
+	 empInfo.setLocation(location); empInfo.setSalary(salary);
+	 
+	 empService.addEmployeeDLS(empInfo);
+	 
+	  return "thanku"; }*/
 
 }

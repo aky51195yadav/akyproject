@@ -19,22 +19,21 @@ public class EmployeeNewController {
 		return "enter_click";
 	}
 
-	@RequestMapping(value = "getPage", method = RequestMethod.GET)
+	/*@RequestMapping(value = "getPage", method = RequestMethod.GET)
 	public ModelAndView getDetails() {
 		List<EmployeeNew> list1 = service.getDetails();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("entry_form");
 		mav.addObject("list1", list1);
 		return mav;
-	}
+	}*/
 
-	@RequestMapping(value = "getDetails", method = RequestMethod.POST)
+	/*@RequestMapping(value = "getDetails", method = RequestMethod.POST)
 	public ModelAndView fetchDetails(@RequestParam String name, @RequestParam String profile,
 			@RequestParam String address) {
 		List<EmployeeNew> list;
 		if (address == "" && profile == "") {
 			list = service.getStudentDetails3(name);
-
 		} else if (profile == "") {
 			list = service.getStudentDetails1(name, address);
 		} else if (address == "") {
@@ -46,11 +45,12 @@ public class EmployeeNewController {
 		mav.setViewName("employee_data");
 		mav.addObject("list", list);
 		return mav;
-	}
-	@RequestMapping(value = "boxId")
-	public void getCheckbox(@RequestParam int empId)
-	{
+	}*/
+
+	@RequestMapping(value = "boxId", method = RequestMethod.POST)
+	public void getCheckbox(@RequestParam String empId) {
 		System.out.println(empId);
+
 	}
 
 }

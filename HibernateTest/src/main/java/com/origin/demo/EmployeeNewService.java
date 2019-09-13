@@ -31,7 +31,7 @@ public class EmployeeNewService {
 				});
 	}
 
-	public List<EmployeeNew> getStudentDetails1(String name, String address) { 
+	public List<EmployeeNew> getStudentDetails1(String name, String address) {
 		return jdbcTemplate.query("Select EmpId , Salary from Tbl_Employee where EmpName = ? and Address =? ",
 				new Object[] { name, address }, new RowMapper<EmployeeNew>() {
 
@@ -40,7 +40,7 @@ public class EmployeeNewService {
 						EmployeeNew emp = new EmployeeNew();
 						emp.setId(rs.getInt(1));
 						emp.setSalary(rs.getInt(2));
-                        
+
 						return emp;
 					}
 
