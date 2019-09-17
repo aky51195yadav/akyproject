@@ -1,8 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="header.jsp"%>
 <link rel="stylesheet" href="style.css">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.11.2.js"></script>
@@ -59,59 +55,67 @@ a {
 </style>
 </head>
 <body>
-	<form action="http://localhost:9021/HibernateTest/fillNewEmpDataForm"
+	<form action="http://localhost:9021/HibernateTest/getDiscription"
 		method="post">
 		<div align="center">
-			<h3 style="text-decoration: underline;">Save Employee Data form</h3>
+			<h3>Enter Description and Amount</h3>
 			<table>
 				<tr>
+					<td><input type="hidden" value="${emp.id}" readonly="readonly"
+						name="empId"></td>
+
+				</tr>
+				<tr>
 					<td>Employee Name:</td>
-					<td><input type="text" name="empName"
-						placeholder="Enter Employee Name" required="required"></td>
+					<td><input type="text" value="${emp.name}" readonly="readonly"
+						name="name"></td>
 
 				</tr>
 				<tr>
 					<td>Profile:</td>
-					<td><input type="text" name="profile"
-						placeholder="Enter Profile" required="required"></td>
+					<td><input type="text" value="${emp.profile}"
+						readonly="readonly" name="profile"></td>
 
 				</tr>
 				<tr>
+					<td>Salary:</td>
+					<td><input type="number" value="${emp.salary}"
+						readonly="readonly" name="salary"></td>
+				</tr>
+				<tr>
 					<td>Address:</td>
-					<td><input type="text" name="address"
-						placeholder="Enter Address" required="required"></td>
+					<td><input type="text" value="${emp.address}"
+						readonly="readonly" name="address"></td>
 
 				</tr>
 				<tr>
 					<td>Bank:</td>
-					<td><input type="text" name="bankName"
-						placeholder="Enter Bank Name" required="required"></td>
+					<td><input type="text" value="${info.bankName}"
+						readonly="readonly"></td>
 
 				</tr>
 				<tr>
 					<td>Account Number:</td>
-					<td><input type="number" name="AccountNumber"
-						placeholder="Enter Salary" required="required"> <br>
+					<td><input type="number" value="${info.accountNo}"
+						readonly="readonly"> <br>
 				</tr>
 				<tr>
 					<td>IFSC-Code:</td>
-					<td><input type="text" name="ifsc-code"
-						placeholder="Enter IFSC-Code" required="required"></td>
+					<td><input type="text" value="${info.ifsc}"
+						readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>Amount:</td>
-					<td><input type="number" name="salary"
-						placeholder="Enter amount" required="required"></td>
+					<td><input type="number" placeholder="Enter amount"
+						name="amount"></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td><textarea rows="4" cols="30" name="comment" form="usrform">
-							Enter text here...</textarea>
-					</td>
+					<td><textarea rows="4" cols="30" name="disc">Enter text here...</textarea></td>
 				</tr>
-				
+
 				<tr>
-					<td><input type="submit" class="btnsubmit1" value="Submit"></td>
+					<td><input type="submit" class="btnsubmit1" value="Update"></td>
 				</tr>
 			</table>
 		</div>

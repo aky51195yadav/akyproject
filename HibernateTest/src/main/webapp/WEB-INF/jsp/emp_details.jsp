@@ -1,9 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="header.jsp"%>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
@@ -152,15 +147,12 @@ h2 {
 				<td>${info.accountNo}</td>
 				<td>${info.ifsc}</td>
 				<td>
-					<form
-						action="http://localhost:9021/HibernateTest/fillNewEmpDataForm"
-						, method="post">
-						<input type="hidden" value="${ emp.id}" name="empId"> <input
-							type="submit">
+					<form action="http://localhost:9021/HibernateTest/empId"
+						method="post">
+						<input type="hidden" value="${emp.id}" name="empId"> <input
+							type="submit" value="Edit Details">
 					</form>
 				</td>
-
-
 			</tr>
 		</table>
 	</div>

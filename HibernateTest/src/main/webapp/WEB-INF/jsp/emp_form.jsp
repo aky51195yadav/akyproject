@@ -1,8 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="header.jsp"%>
 <style>
 input {
 	border-bottom-width: 5px;
@@ -33,8 +29,9 @@ a {
 	</div>
 	<br />
 	<div align="center">
-		<form action="http://localhost:9021/HibernateTest/save" method="post" enctype="multipart/form-data">
-			<h2>Enter Employee Details</h2>
+		<form action="http://localhost:9021/HibernateTest/save" method="post"
+			enctype="multipart/form-data">
+			<h2>New Employee Details</h2>
 			<table id="tbl">
 
 				<tr>
@@ -57,10 +54,58 @@ a {
 					<td><input type="text" name="address" required="required"
 						placeholder="Enter address"></td>
 				</tr>
+
+
 				<tr>
-				<td>Image</td>
-				<td><input type="file" name="image" required="required"></td>
+					<td>Account No:</td>
+					<td><input type="number" name="accountNo" required="required"
+						placeholder="Enter account no"></td>
 				</tr>
+
+				<tr>
+					<td>IFSC Code:</td>
+					<td><input type="text" name="ifsc" required="required"
+						placeholder="Enter Ifsc code"></td>
+				</tr>
+
+				<tr>
+					<td>Bank Name:</td>
+					<td><input type="text" name="bankName" required="required"
+						placeholder="Enter bank name"></td>
+				</tr>
+				<tr>
+					<td>Bill:</td>
+					<td><input type="file" name="image"></td>
+				</tr>
+				<tr>
+					<td>Date:</td>
+					<td><input type="date" name="date"></td>
+				</tr>
+				<tr>
+					<td>Time:</td>
+					<td><input type="time" name="time"></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><textarea rows="4" cols="30" name="desc">Enter text here...</textarea></td>
+				</tr>
+				<tr>
+					<td>Amount:</td>
+					<td><input type="text" name="amount" required="required"
+						placeholder="Enter amount"></td>
+				</tr>
+
+				<tr>
+					<td>User Name:</td>
+					<td><input type="text" name="userName" required="required"
+						placeholder="Enter user name"></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="pwd" required="required"
+						placeholder="Enter password"></td>
+				</tr>
+
 				<tr>
 					<td><input type="submit" value="Save Details" /></td>
 			</table>

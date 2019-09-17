@@ -1,10 +1,11 @@
-package com.origin.demo;
+package com.origin.web;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +15,7 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Empid")
-	private int id;
+	private Integer id;
 
 	@Column(name = "EmpName")
 	private String name;
@@ -23,27 +24,38 @@ public class Employee {
 	private String profile;
 
 	@Column(name = "Salary")
-	private int salary;
+	private Integer salary;
 
 	@Column(name = "Address")
 	private String address;
 
-	@Column(name = "Image")
-	private  byte[] image;
+	@Column(name = "UserName")
+	private String userName;
 
-	public byte[] getImage() {
-		return image;
+	@Column(name = "Password")
+	private String pwd;
+
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public int getId() {
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -63,11 +75,11 @@ public class Employee {
 		this.profile = profile;
 	}
 
-	public int getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 
@@ -82,6 +94,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", profile=" + profile + ", salary=" + salary + ", address="
-				+ address + "]";
+				+ address + ", userName=" + userName + ", pwd=" + pwd + "]";
 	}
+
 }

@@ -1,8 +1,6 @@
-package com.origin.demo;
+package com.origin.service;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +8,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.origin.repo.EmployeeRepo;
+import com.origin.web.Employee;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -38,8 +39,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void imageWork(MultipartFile image) {
-		 String fileName = image.getOriginalFilename();
-		 File file = new File("E:\\Ankit Yadav\\DatabaseImages", fileName);
+		String fileName = image.getOriginalFilename();
+		File file = new File("E:\\Ankit Yadav\\DatabaseImages", fileName);
 		try {
 			image.transferTo(file);
 		} catch (IllegalStateException e) {
@@ -47,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-      
+
 	}
 
 	@Override
@@ -69,4 +70,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
+	@Override
+	public boolean userValidation(String userName) {
+
+		return userName.equalsIgnoreCase("abc");
+
+	}
+
+	@Override
+	public boolean pwdValidation(String password) {
+		return password.equals("abc");
+	}
+
+	@Override
+	public Employee fetchUser(String userName, String pwd) {
+		System.out.println("vdfhjkvbdfjvgbf ghdv ");
+		return employeeRepo.findByUserNameAndPwd(userName, pwd);
+	}
+
+	
 }

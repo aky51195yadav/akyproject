@@ -1,15 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="header.jsp"%>
 <style>
 a {
 	text-decoration: none;
 	color: blue;
 	font-size: large;
 }
+
 table {
 	border: 2px solid;
 	border-collapse: collapse;
@@ -46,12 +42,12 @@ td {
 				<th>Action</th>
 				<th>Action</th>
 			</tr>
-			<c:forEach items="${list}" var="list">
+			<c:forEach items="${empList}" var="empList">
 				<tr>
-					<td>${list.name}</td>
-					<td>${list.profile}</td>
-					<td>${list.salary}</td>
-					<td>${list.address}</td>
+					<td>${empList.name}</td>
+					<td>${empList.profile}</td>
+					<td>${empList.salary}</td>
+					<td>${empList.address}</td>
 					<td>
 						<form action="http://localhost:9021/HibernateTest/recordsToUpdate"
 							method="post">
@@ -80,8 +76,9 @@ td {
 		</table>
 	</div>
 	<div align="center">
-	<h2>Save More Records</h2>
-	<a href="http://localhost:9021/HibernateTest/form"><i>Click Here</i></a>
+		<h2>Save More Records</h2>
+		<a href="http://localhost:9021/HibernateTest/form"><i>Click
+				Here</i></a>
 	</div>
 </body>
 </html>

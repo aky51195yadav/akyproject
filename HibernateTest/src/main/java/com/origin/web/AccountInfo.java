@@ -1,48 +1,50 @@
-package com.origin.demo;
+package com.origin.web;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "AccountInfo")
 public class AccountInfo {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "EmpId")
-	private int id;
-	
-	@Column(name= "EmpName")
-	private String name;
-	
-	@Column(name="AccountNo")
-	private int accountNo;
-	
-	@Column(name="IFSCCode")
+	@Column(name = "AccId")
+	private Integer accId;
+
+	@Column(name = "AccountNo")
+	private Integer accountNo;
+
+	@Column(name = "IFSCCode")
 	private String ifsc;
-	
-	@Column(name="BankName")
+
+	@Column(name = "BankName")
 	private String bankName;
 
-	public int getId() {
-		return id;
+	@OneToOne
+	@JoinColumn(name = "EmpId")
+	private Employee employee;
+
+	public Integer getAccId() {
+		return accId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAccId(Integer accId) {
+		this.accId = accId;
 	}
 
-	public String getName() {
-		return name;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	public int getAccountNo() {
@@ -71,9 +73,8 @@ public class AccountInfo {
 
 	@Override
 	public String toString() {
-		return "EmployeeAccountInfo [id=" + id + ", name=" + name + ", accountNo=" + accountNo + ", ifsc="
-				+ ifsc + ", BankName=" + bankName + "]";
+		return "AccountInfo [accId=" + accId + ", accountNo=" + accountNo + ", ifsc=" + ifsc + ", bankName=" + bankName
+				+ ", employee=" + employee + "]";
 	}
-	
-		
+
 }

@@ -1,9 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="header.jsp"%>
 <link rel="stylesheet" href="style.css">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.11.2.js"></script>
@@ -179,47 +174,5 @@ a {
 
 		</form>
 	</div>
-
-
-	<!--  
-	<div align="center">
-		<h3>Employee form</h3>
-		<table>
-			<tr>
-				<td>Employee Name:</td>
-				<td><input type="text" name="Empname"
-					placeholder="Enter Employee Name" required="required"></td>
-
-			</tr>
-			<tr>
-				<td>Bank Name:</td>
-				<td><input type="text" name="BankName"
-					placeholder="Enter Bank Name" required="required"></td>
-
-			</tr>
-			<tr>
-				<td>Account Number:</td>
-				<td><input type="number" name="AccountNumber"
-					placeholder="Enter Salary" required="required"> <br>
-			</tr>
-			<tr>
-				<td>IFSC-Code:</td>
-				<td><input type="text" name="ifsc-code"
-					placeholder="Enter IFSC-Code" required="required"></td>
-			</tr>
-			<tr>
-				<td>Salary:</td>
-				<td><input type="number" name="salary"
-					placeholder="Enter Salary" required="required"></td>
-			</tr>
-
-			<tr>
-				<td><input type="submit" class="btnsubmit1" value="Submit"></td>
-			</tr>
-		</table>
-	</div>
-	</form>
-
-	</div>-->
 </body>
 </html>
