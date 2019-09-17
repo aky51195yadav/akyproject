@@ -26,6 +26,7 @@ import com.origin.service.EmployeeService;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService empService;
+
 	@Autowired
 	private AccountInfoService accService;
 
@@ -157,7 +158,7 @@ public class EmployeeController {
 		}
 		if (!b1) {
 			model.addAttribute("error", "Invalid password");
-			return "user_login";
+			return " user_login";
 		}
 
 		return "enter_nameaddress";

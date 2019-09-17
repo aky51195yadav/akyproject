@@ -1,12 +1,8 @@
 package com.origin.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.web.multipart.MultipartFile;
-
 import com.origin.web.Employee;
-import com.origin.web.Expenses;
 
 public interface EmployeeService {
 
